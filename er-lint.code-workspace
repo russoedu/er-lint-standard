@@ -1,0 +1,57 @@
+{
+  "settings": {
+    "files.exclude": {
+      // ".npmrc": true,
+      // "typedoc.json": true,
+      // "package-lock.json": true,
+      // ".editorconfig": true,
+      // "jest.config.js": true,
+      // ".gitignore": true,
+      // // "dist": true,
+      
+      // "doc": true,
+      // "node_modules": true,
+      // "src/project-templates": true,
+      // "src/build-templates": true,
+      // "coverage": true,
+
+    },
+    "cSpell.words": [
+    ],
+    "eslint.useFlatConfig": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "Build",
+        "command": "npm run build",
+        "request": "launch",
+        "type": "node-terminal"
+      },
+      {
+        "name": "Auto",
+        "command": "npm run dev",
+        "request": "launch",
+        "type": "node-terminal"
+      },
+      {
+        "name": "Test",
+        "command": "npm test --watchAll",
+        "request": "launch",
+        "type": "node-terminal",
+      },
+      {
+        "name": "Generate documentation",
+        "command": "npm run doc",
+        "request": "launch",
+        "type": "node-terminal"
+      }
+    ],
+  },
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+}

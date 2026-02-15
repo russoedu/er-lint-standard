@@ -1,0 +1,67 @@
+{
+  "name": "@jato/auto-scripts",
+  "version": "28.1.0",
+  "description": "Azure DevOps build CLI",
+  "scripts": {
+    "dev": "npm run build && node dist/_auto.js conf-env",
+    "build": "rimraf dist && tsc -p tsconfig.app.json",
+    "postbuild": "node copyFolders.mjs",
+    "test": "jest --collectCoverage",
+    "lint": "eslint . -c ./eslint.config.mjs",
+    "doc": "typedoc --tsconfig tsconfig.app.json"
+  },
+  "bin": {
+
+    
+    "auto": "./dist/_auto.js",
+    "auto-build-templates": "./dist/buildTemplates.js",
+    "auto-bump-major": "./dist/bump.js 1",
+    "auto-bump-minor": "./dist/bump.js 2",
+    "auto-bump-patch": "./dist/bump.js 3",
+    "auto-pub": "./dist/pub.js",
+    "auto-pub-major": "./dist/pub.js 1",
+    "auto-pub-minor": "./dist/pub.js 2",
+    "auto-pub-patch": "./dist/pub.js 3",
+    "auto-clean-config": "./dist/cleanConfig.js",
+    "auto-conf-to-local": "./dist/configToLocalSettings.js",
+    "auto-conf-sort": "./dist/configSort.js",
+    "auto-env-extract": "./dist/extractEnv.js",
+    "auto-help": "./dist/helper.js",
+    "auto-local-to-conf": "./dist/localSettingsToConfig.js",
+    "auto-project-templates-jest": "./dist/projectTemplates.js jest",
+    "auto-project-templates-vitest": "./dist/projectTemplates.js vitest",
+    "auto-project-templates": "./dist/projectTemplates.js"
+  },
+  "files": [
+    "/dist"
+  ],
+  "author": "Eduardo Russo",
+  "license": "UNLICENCED",
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-plugin-yml": "^3.0.0",
+    "globals": "^17.3.0",
+    "jest": "^30.0.5",
+    "jest-junit": "^16.0.0",
+    "rimraf": "^6.1.2",
+    "ts-jest": "^29.4.1",
+    "tslib": "^2.8.1",
+    "typedoc": "^0.28.11",
+    "typedoc-plugin-missing-exports": "^4.1.0",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@types/node": "$@types/node",
+    "eslint": "$eslint",
+    "globals": "$globals",
+    "typescript": "$typescript",
+    "typedoc": "$typedoc"
+  },
+  "dependencies": {
+    "@eslint/json": "^1.0.1",
+    "@inquirer/prompts": "^8.2.0",
+    "commander": "^14.0.3",
+    "eslint-plugin-jsonc": "^2.21.1",
+    "inquirer-file-selector": "^1.0.1"
+  }
+}

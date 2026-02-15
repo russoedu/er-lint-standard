@@ -1,0 +1,22 @@
+# Docker image with Chrome and Puppeteer
+
+trigger:
+  - master
+
+pool:
+  name: Azure Pipelines
+  vmImage: windows-latest
+  demands:
+    - npm
+
+variables:
+  - group: Build
+
+steps:
+  - template: build-templates/01-install-node.yml
+  - template: build-templates/02-set-version.yml
+  - template: build-templates/03-npm-install.yml
+  - template: build-templates/04-test-publish.yml
+  - template: build-templates/09-documentation.yml
+  - template: build-templates/05-build-prune-only.yml
+  - template: build-templates/08-publish-npm.yml
