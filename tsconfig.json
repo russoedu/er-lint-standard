@@ -41,7 +41,7 @@
     "strict": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false
   },
   "exclude": [
     "./dist/**",

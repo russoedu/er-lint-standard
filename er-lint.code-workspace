@@ -16,8 +16,7 @@
       // "coverage": true,
 
     },
-    "cSpell.words": [
-    ],
+    "cSpell.words": [],
     "eslint.useFlatConfig": true,
     "typescript.tsdk": "node_modules/typescript/lib",
   },
@@ -27,13 +26,13 @@
         "name": "Build",
         "command": "npm run build",
         "request": "launch",
-        "type": "node-terminal"
+        "type": "node-terminal",
       },
       {
         "name": "Auto",
         "command": "npm run dev",
         "request": "launch",
-        "type": "node-terminal"
+        "type": "node-terminal",
       },
       {
         "name": "Test",
@@ -45,13 +44,13 @@
         "name": "Generate documentation",
         "command": "npm run doc",
         "request": "launch",
-        "type": "node-terminal"
-      }
+        "type": "node-terminal",
+      },
     ],
   },
   "folders": [
     {
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
 }
