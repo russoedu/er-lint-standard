@@ -1,4 +1,6 @@
-export const jsonRules = {
+import { Linter } from 'eslint'
+
+export const rulesJson: Linter.RulesRecord = {
   /* #region  ESLint rules */
   // Never add extra line to JSON files
   'eol-last':                ['error', 'never'],
@@ -130,8 +132,8 @@ export const jsonRules = {
   'jsonc/space-unary-ops':         'error',
 /* #endregion */
 }
-export const jsonC5Rules = {
-  ...jsonRules,
+export const rulesJsonC5: Linter.RulesRecord  = {
+  ...rulesJson,
   // disallow comments
   'jsonc/no-comments':  'off',
   'jsonc/comma-dangle': ['error', 'always'],

@@ -1,4 +1,6 @@
-export const importRules = {
+import { Linter } from 'eslint'
+
+const rulesJavaScriptStandardImport: Linter.RulesRecord = {
   'import/export':           'error',
   'import/first':            'error',
   'import/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
@@ -8,7 +10,7 @@ export const importRules = {
   'import/no-webpack-loader-syntax': 'error',
 }
 
-export const nRules = {
+const rulesJavaScriptStandardN: Linter.RulesRecord  = {
   'n/handle-callback-err':   ['error', '^(err|error)$'],
   'n/no-callback-literal':   'error',
   'n/no-deprecated-api':     'error',
@@ -17,11 +19,11 @@ export const nRules = {
   'n/no-path-concat':        'error',
   'n/process-exit-as-throw': 'error',
 }
-export const promiseRules = {
+const rulesJavaScriptStandardPromise: Linter.RulesRecord  = {
 
   'promise/param-names': 'error',
 }
-export const standardRules = {
+export const rulesJavaScriptStandard: Linter.RulesRecord  = {
   'no-var':           'warn',
   'object-shorthand': ['warn', 'properties'],
 
@@ -238,8 +240,13 @@ export const standardRules = {
   'wrap-iife':          ['error', 'any', { functionPrototypeMethods: true }],
   'yield-star-spacing': ['error', 'both'],
   yoda:                 ['error', 'never'],
+
+  ...rulesJavaScriptStandardImport,
+  ...rulesJavaScriptStandardN,
+  ...rulesJavaScriptStandardPromise,
 }
-export const standardOverrideRules = {
+export const rulesJavaScriptEr: Linter.RulesRecord  = {
+  ...rulesJavaScriptStandard,
   'no-unused-vars':        'off',
   'no-dupe-class-members': 'off',
   'no-var':                'error',

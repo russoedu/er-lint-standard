@@ -1,4 +1,6 @@
-export const tsRules = {
+import { Linter } from 'eslint'
+
+export const tsRules: Linter.RulesRecord = {
   '@typescript-eslint/indent':                         'off',
   '@typescript-eslint/no-floating-promises':           'error',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
