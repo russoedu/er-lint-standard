@@ -8,9 +8,9 @@ import pluginReact from 'eslint-plugin-react'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
 import pluginReactRefresh from 'eslint-plugin-react-refresh'
 import pluginTypescript from 'typescript-eslint'
-import { rulesJavaScriptEr, rulesJavaScriptPromiseRecommendedRules, rulesJavaScriptStandard } from '../rules/javaTypeScript'
-import { rulesReact } from '../rules/react'
-import { ConfigWithExtends } from '../_types'
+import { rulesJavaScriptEr, rulesJavaScriptPromiseRecommendedRules, rulesJavaScriptStandard } from './eslint.config.rules.javaTypeScript'
+import { rulesReact } from './eslint.config.rules.react'
+import { ConfigWithExtends } from './_types'
 
 
 const globalsJsTs = {

@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src/eslint",
-    "outDir": "./eslintconfig",
+    "outDir": "./eslint",
 
     "module": "preserve",
     "moduleResolution": "bundler",

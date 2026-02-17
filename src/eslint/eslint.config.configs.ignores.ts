@@ -1,4 +1,4 @@
-import { ConfigWithExtends } from '../_types'
+import { ConfigWithExtends } from './_types'
 
 export const configIgnores: ConfigWithExtends = {
   name:    'Global Ignores',
