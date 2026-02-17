@@ -2,10 +2,15 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src",
+    "module": "preserve",
+    "moduleResolution": "bundler",
 
     "noEmit": false,
-
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "sourceMap": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
   },
   "include": ["./src/**/*"],
   "exclude": [

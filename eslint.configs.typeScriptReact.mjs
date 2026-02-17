@@ -1,7 +1,7 @@
 import globalsConfig from 'globals'
-import { rulesJavaScriptEr, rulesJavaScriptStandard } from '../rules/javaScript'
-import { rulesReact } from '../rules/react'
-import { tsRules } from '../rules/typeScript'
+import { rulesJavaScriptEr, rulesJavaScriptStandard } from '../rules/eslint.rules.javaScript.mjs'
+import { rulesReact } from '../rules/eslint.rules.react.mjs'
+import { tsRules } from '../rules/eslint.rules.typeScript.mjs'
 
 import pluginImport from 'eslint-plugin-import'
 import pluginNode from 'eslint-plugin-n'
@@ -9,7 +9,7 @@ import pluginPromise from 'eslint-plugin-promise'
 import pluginReact from 'eslint-plugin-react'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
 import pluginReactRefresh from 'eslint-plugin-react-refresh'
-import pluginTypescript, { ConfigWithExtends } from 'typescript-eslint'
+import pluginTypescript from 'typescript-eslint'
 
 const globals = {
   ...globalsConfig.node,
@@ -18,7 +18,7 @@ const globals = {
   // ...globals.jquery`
 }
 
-export const javaScript: ConfigWithExtends = {
+export const javaScript = {
     name:  'JavaScript rules',
     files: [
       '**/*.{js,mjs,cjs,jsx}',

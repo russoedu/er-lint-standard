@@ -20,7 +20,6 @@
     "cjsx",
     "mjsx"
   ],
-    "eslint.useFlatConfig": true,
     "typescript.tsdk": "node_modules/typescript/lib",
   },
   "launch": {

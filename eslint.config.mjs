@@ -1,8 +1,7 @@
 import { defineConfig } from 'eslint/config'
-import { configEr } from './dist/eslint-configurations/configEr.js'
-
-/* #region  CONFIG */
-export default defineConfig(
-  configEr
-)
-/* #endregion */
+import { configIgnores } from './src/eslint/configs/config.ignores.js'
+import { configJsTsEr } from './src/eslint/configs/javaTypeScript.js'
+export default defineConfig([
+  configIgnores,
+  configJsTsEr,
+])

@@ -1,6 +1,4 @@
-import { Linter } from 'eslint'
-
-const rulesJavaScriptStandardImport: Linter.RulesRecord = {
+const rulesJavaScriptStandardImport = {
   'import/export':           'error',
   'import/first':            'error',
   'import/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
@@ -10,7 +8,7 @@ const rulesJavaScriptStandardImport: Linter.RulesRecord = {
   'import/no-webpack-loader-syntax': 'error',
 }
 
-const rulesJavaScriptStandardN: Linter.RulesRecord  = {
+const rulesJavaScriptStandardN  = {
   'n/handle-callback-err':   ['error', '^(err|error)$'],
   'n/no-callback-literal':   'error',
   'n/no-deprecated-api':     'error',
@@ -19,11 +17,11 @@ const rulesJavaScriptStandardN: Linter.RulesRecord  = {
   'n/no-path-concat':        'error',
   'n/process-exit-as-throw': 'error',
 }
-const rulesJavaScriptStandardPromise: Linter.RulesRecord  = {
+const rulesJavaScriptStandardPromise  = {
 
   'promise/param-names': 'error',
 }
-export const rulesJavaScriptStandard: Linter.RulesRecord  = {
+export const rulesJavaScriptStandard  = {
   'no-var':           'warn',
   'object-shorthand': ['warn', 'properties'],
 
@@ -245,7 +243,7 @@ export const rulesJavaScriptStandard: Linter.RulesRecord  = {
   ...rulesJavaScriptStandardN,
   ...rulesJavaScriptStandardPromise,
 }
-export const rulesJavaScriptEr: Linter.RulesRecord  = {
+export const rulesJavaScriptEr  = {
   ...rulesJavaScriptStandard,
   'no-unused-vars':        'off',
   'no-dupe-class-members': 'off',

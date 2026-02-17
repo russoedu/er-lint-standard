@@ -4,8 +4,8 @@
     "rootDir": ".",
     "outDir": "./dist",
 
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
 
     "target": "esnext",
     "lib": [

@@ -1,8 +1,8 @@
 
 import pluginJson from '@eslint/json'
 import pluginJsonc from 'eslint-plugin-jsonc'
-import { ConfigWithExtends } from '../../_types'
-import { rulesJson, rulesJsonC5 } from '../rules/json'
+import { rulesJson, rulesJsonC5 } from '../rules/json.js'
+import { ConfigWithExtends } from '../_types/index.js'
 
 export const configJSON: ConfigWithExtends = {
     name:  'JSON Config',
