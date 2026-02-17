@@ -1,6 +1,4 @@
-import { Linter } from 'eslint'
-
-export const rulesJson: Linter.RulesRecord = {
+export const rulesJson = {
   /* #region  ESLint rules */
   // Never add extra line to JSON files
   'eol-last':                ['error', 'never'],
@@ -10,7 +8,6 @@ export const rulesJson: Linter.RulesRecord = {
     { max: 1, maxEOF: 0 },
   ],
   /* #endregion */
-
   /* #region  JSON plugin rules */
   // Disallow duplicate keys in JSON objects
   'json/no-duplicate-keys':    'error',
@@ -25,10 +22,9 @@ export const rulesJson: Linter.RulesRecord = {
   // Require the JSON top-level value to be an array or object
   'json/top-level-interop':    'error',
   /* #endregion */
-
   /* #region  JSONC plugin rules */
   // enforce naming convention to property key names
-  'jsonc/key-name-casing': ['error',
+  'jsonc/key-name-casing':     ['error',
     {
       camelCase:            true,
       PascalCase:           true,
@@ -130,9 +126,9 @@ export const rulesJson: Linter.RulesRecord = {
   'jsonc/quotes':                  'error',
   // disallow spaces after unary operators
   'jsonc/space-unary-ops':         'error',
-/* #endregion */
+  /* #endregion */
 }
-export const rulesJsonC5: Linter.RulesRecord = {
+export const rulesJsonC5 = {
   ...rulesJson,
   // disallow comments
   'jsonc/no-comments':  'off',

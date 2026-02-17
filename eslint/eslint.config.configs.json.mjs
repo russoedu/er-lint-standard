@@ -1,9 +1,7 @@
 import pluginJson from '@eslint/json'
 import pluginJsonc from 'eslint-plugin-jsonc'
-import { rulesJson, rulesJsonC5 } from './eslint.config.rules.json.js'
-import { ConfigWithExtends } from './_types.js'
-
-export const configJSON: ConfigWithExtends = {
+import { rulesJson, rulesJsonC5 } from './eslint.config.rules.json.mjs'
+export const configJSON = {
   name:  'JSON Config',
   files: [
     '**/*.{json}',
@@ -13,13 +11,11 @@ export const configJSON: ConfigWithExtends = {
     pluginJsonc.configs['flat/recommended-with-json'],
   ],
   language: 'json/json',
-
-  rules: {
+  rules:    {
     ...rulesJson,
   },
 }
-
-export const configJSONC: ConfigWithExtends = {
+export const configJSONC = {
   name:  'JSONC Config',
   files: [
     '**/*.{jsonc}',
@@ -29,13 +25,11 @@ export const configJSONC: ConfigWithExtends = {
     pluginJsonc.configs['flat/recommended-with-jsonc'],
   ],
   language: 'json/jsonc',
-
-  rules: {
+  rules:    {
     ...rulesJsonC5,
   },
 }
-
-export const configJSON5: ConfigWithExtends = {
+export const configJSON5 = {
   name:  'JSON5 Config',
   files: [
     '**/*.{json5}',
@@ -46,8 +40,7 @@ export const configJSON5: ConfigWithExtends = {
     pluginJsonc.configs['flat/recommended-with-json5'],
   ],
   language: 'json/json5',
-
-  rules: {
+  rules:    {
     ...rulesJsonC5,
   },
 }
