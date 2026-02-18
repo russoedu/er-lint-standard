@@ -38,6 +38,9 @@ export const rulesJavaScriptPromiseRecommendedRules : Linter.RulesRecord = {
   'promise/no-return-in-finally':   'warn',
   'promise/valid-params':           'warn',
 }
+/**
+ * Standard JavaScript rules - https://standardjs.com
+ */
 export const rulesJavaScriptStandard : Linter.RulesRecord = {
   'no-var':           'warn',
   'object-shorthand': ['warn', 'properties'],
@@ -260,7 +263,7 @@ export const rulesJavaScriptStandard : Linter.RulesRecord = {
   ...rulesJavaScriptStandardN,
   ...rulesJavaScriptStandardPromise,
 }
-export const rulesJavaScriptEr : Linter.RulesRecord = {
+export const rulesJavaScriptLintErAll : Linter.RulesRecord = {
   ...rulesJavaScriptStandard,
   'no-unused-vars':        'off',
   'no-dupe-class-members': 'off',
@@ -313,5 +316,44 @@ export const rulesJavaScriptEr : Linter.RulesRecord = {
       ignoreDirectives:  true,
     },
   ],
-  'newline-before-return': 'error',
+  'newline-before-return':                             'error',
+  '@typescript-eslint/indent':                         'off',
+  '@typescript-eslint/no-floating-promises':           'error',
+  '@typescript-eslint/explicit-module-boundary-types': 'off',
+  '@typescript-eslint/no-explicit-any':                'off',
+  '@typescript-eslint/no-non-null-assertion':          'off',
+  '@typescript-eslint/consistent-type-definitions':    'off',
+  '@typescript-eslint/prefer-regexp-exec':             'off',
+  '@typescript-eslint/no-require-imports':             'error',
+  '@typescript-eslint/no-unused-vars':                 [
+    'error',
+    {
+      argsIgnorePattern:         '^_',
+      varsIgnorePattern:         '^_',
+      caughtErrorsIgnorePattern: '^_',
+    },
+  ],
+  'react-in-jsx-scope':                   'off',
+  'react/jsx-uses-react':                 'error',
+  'react/jsx-uses-vars':                  'error',
+  'react-refresh/only-export-components': [
+    'warn',
+    { allowConstantExport: true },
+  ],
+  'unicorn/filename-case': [
+    'error',
+    {
+      cases: {
+        camelCase:  true,
+        pascalCase: true,
+      },
+    },
+  ],
+}
+
+export const rulesJavaScriptLintErAllTest : Linter.RulesRecord = {
+  ...rulesJavaScriptLintErAll,
+  'import/first':                          'off',
+  '@typescript-eslint/no-require-imports': 'off',
+  '@typescript-eslint/no-empty-function':  'off',
 }

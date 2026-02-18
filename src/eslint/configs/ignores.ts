@@ -1,4 +1,6 @@
-export const configIgnores = {
+import { ConfigWithExtends } from '../helpers'
+
+export const configIgnores: ConfigWithExtends = {
   name:    'Global Ignores',
   ignores: [
     '.azurite/**',
@@ -15,6 +17,7 @@ export const configIgnores = {
     'node_modules/**',
     '.nx/**',
     'tmp/*',
+
     // The file can be too big and is auto-generated, we don't want to waste resource on it
     'package-lock.json',
   ],
