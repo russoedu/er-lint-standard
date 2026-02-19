@@ -7,6 +7,14 @@ import { configYAML } from './yaml'
  * All configs. This is the main export of the configs module, and includes all the individual configs for different file types and purposes. Each config is designed to be used with ESLint's flat config system, and can be extended or customized as needed. The configs are organized by file type (e.g., ts for TypeScript, json for JSON files) and by purpose (e.g., standard for standard style guide, lintErAll for more opinionated rules). The global ignores config is applied to all configs to ensure that certain files are always ignored regardless of the specific config being used.
  */
 export const _configs = {
+  lintErAll: [
+    configIgnores,
+    configJSON,
+    configJSON5,
+    configJSONC,
+    configLintErAll,
+    configLintErAllTest,
+  ],
   /**
    * Global ignores, applied to all configs. This is useful for ignoring files that are not relevant to linting, such as build artifacts, dependencies, and other generated files.
    */
