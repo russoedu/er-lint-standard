@@ -1,6 +1,6 @@
-import { ConfigWithExtends } from '../helpers'
+import { Linter } from 'eslint'
 
-export const configIgnores: ConfigWithExtends = {
+export const configIgnores: Linter.Config = {
   name:    'Global Ignores',
   ignores: [
     '.azurite/**',

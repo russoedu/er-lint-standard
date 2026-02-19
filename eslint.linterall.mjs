@@ -671,6 +671,14 @@ const _configs = {
      */
   json: {
     /**
+         * All JSON configurations for JSON, JSONC and JSON5
+         */
+    lintErAll: [
+      configJSON,
+      configJSONC,
+      configJSON5,
+    ],
+    /**
          * Standard JSON config
          */
     json:  configJSON,

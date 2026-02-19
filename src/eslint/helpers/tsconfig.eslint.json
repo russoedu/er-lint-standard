@@ -1,8 +1,8 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src/eslint",
-    "outDir": "./eslint",
+    "rootDir": "../",
+    "outDir": "./build",
 
     "module": "preserve",
     "moduleResolution": "bundler",
@@ -10,11 +10,11 @@
     "noEmit": false,
 
     "sourceMap": false,
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "emitDeclarationOnly": false
   },
-  "include": ["./src/eslint/**/*"],
+  "include": ["../**/*"],
   "exclude": [
     "./src/**/*.test.ts",
     "./src/_jest/**"

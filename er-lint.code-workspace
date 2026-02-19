@@ -17,9 +17,9 @@
 
     },
     "cSpell.words": [
-    "cjsx",
-    "mjsx"
-  ],
+      "cjsx",
+      "mjsx",
+    ],
     "typescript.tsdk": "node_modules/typescript/lib",
   },
   "launch": {
