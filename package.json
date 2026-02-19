@@ -8,7 +8,6 @@
     "rollup": "rimraf dist && rollup -c rollup.config.mjs",
     "build": "rimraf dist && tsc -p tsconfig.lib.json",
     "build:lint": "rollup -c",
-    "old": " && eslint --fix eslint.linterall.new.mjs",
     "rename": "renamer --help",
     "test": "jest --collectCoverage",
     "lint": "eslint . -c ./eslint.config.mjs",
