@@ -1,11 +1,12 @@
 import { rulesJavaScriptLintErAll, rulesJavaScriptLintErAllTest, rulesJavaScriptStandard } from './ts'
 import { rulesJson, rulesJsonC5 } from './json'
 import { rulesYaml } from './yaml'
+import { LintErAllRules } from '../_types'
 
 /**
  * This file is used to export all the rules in a single object, so that they can be easily imported in the configs.
  */
-export const _rules = {
+export const _rules: LintErAllRules = {
   /**
    * TypeScript and JavaScript rules
    */

@@ -7,8 +7,9 @@ import pluginReactRefresh from 'eslint-plugin-react-refresh'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import globalsConfig from 'globals'
 import pluginTypescript from 'typescript-eslint'
-import { _files, ConfigWithExtends } from '../helpers'
-import { _rules } from '../rules'
+import { ConfigWithExtends } from '../_types'
+import { _rules } from '../_rules'
+import { _files } from '../_files'
 
 const globalsJsTs = {
   ...globalsConfig.node,

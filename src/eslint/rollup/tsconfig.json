@@ -1,8 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "../",
-    "outDir": "./build",
+    "outDir": "./tmp-build",
 
     "module": "preserve",
     "moduleResolution": "bundler",
@@ -16,7 +16,6 @@
   },
   "include": ["../**/*"],
   "exclude": [
-    "./src/**/*.test.ts",
-    "./src/_jest/**"
+    "../rollup"
   ]
 }

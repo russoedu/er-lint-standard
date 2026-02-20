@@ -1,11 +1,12 @@
-import { _configs } from './configs'
-import { _files } from './helpers'
-import { _rules } from './rules'
+import { _configs } from './_configs'
+import { _files } from './_files'
+import { LintErAll } from './_types'
+import { _rules } from './_rules'
 
 /**
  * LintErAll is a comprehensive collection of ESLint configurations, file patterns, and rules designed to provide a standardized linting setup for various types of projects. It includes configurations for JavaScript, TypeScript, React, JSON, and YAML, along with specific rules to enforce code quality and consistency across different file types.
  */
-export const lintErAll = {
+export const lintErAll: LintErAll = {
   /**
   * All LintErAll configs for each file type and purpose. This includes configs for TypeScript, JSON, YAML and global ignores. Each config is designed to be used with __ESLint's flat config__ system, and can be extended or customized as needed.
    */

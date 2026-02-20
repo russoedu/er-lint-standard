@@ -346,7 +346,9 @@ export const rulesJavaScriptLintErAll : Linter.RulesRecord = {
     'warn',
     { allowConstantExport: true },
   ],
-  'unicorn/filename-case': [
+  'unicorn/prefer-top-level-await': 'off',
+  'unicorn/prefer-module':          'off',
+  'unicorn/filename-case':          [
     'error',
     {
       cases: {

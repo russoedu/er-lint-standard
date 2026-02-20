@@ -12,7 +12,8 @@
       "ESNext",
       "DOM",
       "DOM.Iterable",
-      "Decorators"
+      "Decorators",
+      "esnext.asynciterable"
     ],
     "types": ["jest", "node"],
     "jsx": "react-jsx",
@@ -41,7 +42,8 @@
     "strict": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true
   },
   "exclude": [
     "./dist/**",

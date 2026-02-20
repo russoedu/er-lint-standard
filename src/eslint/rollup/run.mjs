@@ -1,17 +1,15 @@
 import typescript from '@rollup/plugin-typescript'
 import { ESLint } from 'eslint'
 import { readFileSync, rmSync } from 'node:fs'
-import path from 'node:path'
-import { rollup, type RollupBuild } from 'rollup'
+import { rollup } from 'rollup'
 import { SingleBar } from 'cli-progress'
 import colours from 'ansi-colors'
 
 class RollupSelfBuild {
-  #input = 'src/eslint/index.ts'
-  #eslintFolder = './src/eslint/'
-  #middleFolder = path.join(this.#eslintFolder, 'build')
-  #tsConfigPath = path.join(this.#eslintFolder, 'tsconfig.json')
-  #eslintConfigPath = 'eslint.linterall.mjs'
+  #inputPath = 'src/eslint/index.ts'
+  #buildFolder = 'src/eslint/rollup/' + JSON.parse(readFileSync('src/eslint/rollup/tsconfig.json')).compilerOptions.outDir
+  #tsConfigPath = './src/eslint/rollup/tsconfig.json'
+  #outputPath = 'eslint.linterall.mjs'
   #steps = [
     'loading external dependencies',
     'transpiling TypeScript config with Rollup',
@@ -21,10 +19,14 @@ class RollupSelfBuild {
     'LintErAll self updated',
   ]
 
-  #generator: Generator<number, void, unknown>
-  #bar: SingleBar
-  #external: string[]
-  #bundle: RollupBuild
+  /** Status Bar generator @type Generator<number, void, unknown> */
+  #generator
+  /** Status Bar @type SingleBar */
+  #bar
+  /** @type string[] */
+  #external
+  /** @type RollupBuild */
+  #bundle
 
   constructor () {
     this.#bar = new SingleBar({
@@ -88,7 +90,7 @@ class RollupSelfBuild {
   async #startRollup () {
     this.#updateBar()
     this.#bundle = await rollup({
-      input:    this.#input,
+      input:    this.#inputPath,
       external: this.#external,
       plugins:  [
         typescript({
@@ -105,20 +107,20 @@ class RollupSelfBuild {
     await this.#bundle.write({
       dir:            './',
       format:         'esm',
-      entryFileNames: this.#eslintConfigPath,
+      entryFileNames: this.#outputPath,
     })
   }
 
   #cleanBuild () {
     this.#updateBar()
-    rmSync(this.#middleFolder, { recursive: true, force: true })
+    rmSync(this.#buildFolder, { recursive: true, force: true })
   }
 
   async #lintResult () {
     this.#updateBar()
     const eslint = new ESLint({ fix: true })
 
-    const results = await eslint.lintFiles([this.#eslintConfigPath])
+    const results = await eslint.lintFiles([this.#outputPath])
     await ESLint.outputFixes(results)
 
     this.#updateBar()

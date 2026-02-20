@@ -7,7 +7,7 @@
     "dev": "npm run build && node dist/_auto.js conf-env",
     "rollup": "rimraf dist && rollup -c rollup.config.mjs",
     "build": "rimraf dist && tsc -p tsconfig.lib.json",
-    "build:lint": "node ./src/eslint/rollup.self.ts",
+    "build:lint": "node ./src/eslint/rollup/run.mjs",
     "rename": "renamer --help",
     "test": "jest --collectCoverage",
     "lint": "eslint . -c ./eslint.config.mjs",

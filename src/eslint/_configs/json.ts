@@ -1,7 +1,8 @@
 import pluginJson from '@eslint/json'
 import pluginJsonc from 'eslint-plugin-jsonc'
-import { _files, ConfigWithExtends } from '../helpers'
-import { _rules } from '../rules'
+import { ConfigWithExtends } from '../_types'
+import { _rules } from '../_rules'
+import { _files } from '../_files'
 
 const jsonExtends = [
   pluginJson.configs.recommended,
