@@ -1,5 +1,6 @@
 import pluginJson from '@eslint/json'
 import pluginJsonc from 'eslint-plugin-jsonc'
+import pluginMarkdown from '@eslint/markdown'
 import pluginImport from 'eslint-plugin-import'
 import pluginNode from 'eslint-plugin-n'
 import pluginPromise from 'eslint-plugin-promise'
@@ -464,6 +465,8 @@ const rulesYaml = {
   'spaced-comment': 'off',
 }
 
+const rulesMarkdown = {}
+
 /**
  * This file is used to export all the rules in a single object, so that they can be easily imported in the configs.
  */
@@ -499,7 +502,11 @@ const _rules = {
   /**
      * LintErAll opinionated YAML rules
      */
-  yaml: rulesYaml,
+  yaml:     rulesYaml,
+  /**
+     * LintErAll opinionated Markdown rules
+     */
+  markdown: rulesMarkdown,
 }
 
 /**
@@ -543,6 +550,10 @@ const _files = {
     '**/*.yaml',
     '**/*.yml',
   ],
+  /** MARKDOWN files */
+  markdown: [
+    '**/*.md',
+  ],
 }
 
 const jsonExtends = [
@@ -569,6 +580,16 @@ const configJSON5 = {
   extends:  jsonExtends,
   language: 'json/json5',
   rules:    _rules.json.jsonC5,
+}
+
+const configMarkdown = {
+  name:    'Markdown Config',
+  files:   _files.markdown,
+  extends: [
+    pluginMarkdown.configs.recommended,
+  ],
+  language: 'markdown/commonmark',
+  rules:    _rules.markdown,
 }
 
 const globalsJsTs = {
@@ -651,6 +672,8 @@ const _configs = {
     configJSONC,
     configLintErAll,
     configLintErAllTest,
+    configYAML,
+    configMarkdown,
   ],
   /**
      * Global ignores, applied to all configs. This is useful for ignoring files that are not relevant to linting, such as build artifacts, dependencies, and other generated files.
@@ -702,7 +725,11 @@ const _configs = {
   /**
      * YAML config. This config is applied to YAML files, and includes rules for YAML syntax and best practices. The YAML config is designed to enforce consistent formatting and structure in YAML files, while also providing rules for common YAML pitfalls and best practices.
      */
-  yaml: configYAML,
+  yaml:     configYAML,
+  /**
+     * Markdown config. This config is applied to Markdown files, and includes rules for md syntax and best practices.
+     */
+  markdown: configMarkdown,
 }
 
 /**

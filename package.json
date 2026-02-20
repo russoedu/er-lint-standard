@@ -23,6 +23,7 @@
   "license": "UNLICENCED",
   "devDependencies": {
     "@eslint/json": "^1.0.1",
+    "@eslint/markdown": "^7.5.1",
     "@rollup/plugin-eslint": "^9.2.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.3.0",

@@ -2,6 +2,7 @@ import { rulesJavaScriptLintErAll, rulesJavaScriptLintErAllTest, rulesJavaScript
 import { rulesJson, rulesJsonC5 } from './json'
 import { rulesYaml } from './yaml'
 import { LintErAllRules } from '../_types'
+import { rulesMarkdown } from './markdown'
 
 /**
  * This file is used to export all the rules in a single object, so that they can be easily imported in the configs.
@@ -38,5 +39,9 @@ export const _rules: LintErAllRules = {
   /**
    * LintErAll opinionated YAML rules
    */
-  yaml: rulesYaml,
+  yaml:     rulesYaml,
+  /**
+   * LintErAll opinionated Markdown rules
+   */
+  markdown: rulesMarkdown,
 }

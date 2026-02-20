@@ -1,6 +1,7 @@
 import { LintErAllConfigs } from '../_types'
 import { configIgnores } from './ignores'
 import { configJSON, configJSON5, configJSONC } from './json'
+import { configMarkdown } from './markdown'
 import { configLintErAll, configLintErAllTest, configStandard } from './ts'
 import { configYAML } from './yaml'
 
@@ -15,6 +16,8 @@ export const _configs: LintErAllConfigs = {
     configJSONC,
     configLintErAll,
     configLintErAllTest,
+    configYAML,
+    configMarkdown,
   ],
   /**
    * Global ignores, applied to all configs. This is useful for ignoring files that are not relevant to linting, such as build artifacts, dependencies, and other generated files.
@@ -66,5 +69,9 @@ export const _configs: LintErAllConfigs = {
   /**
    * YAML config. This config is applied to YAML files, and includes rules for YAML syntax and best practices. The YAML config is designed to enforce consistent formatting and structure in YAML files, while also providing rules for common YAML pitfalls and best practices.
    */
-  yaml: configYAML,
+  yaml:     configYAML,
+  /**
+   * Markdown config. This config is applied to Markdown files, and includes rules for md syntax and best practices.
+   */
+  markdown: configMarkdown,
 }

@@ -25,6 +25,7 @@ export type LintErAllConfigs = {
     json5: ConfigWithExtends,
   },
   yaml: ConfigWithExtends,
+  markdown: ConfigWithExtends,
 }
 
 export type LintErAllRules = {
@@ -38,6 +39,7 @@ export type LintErAllRules = {
     jsonC5: RulesConfig,
   },
   yaml: RulesConfig,
+  markdown: RulesConfig,
 }
 export type LintErAll = {
   configs: LintErAllConfigs,
@@ -62,5 +64,6 @@ export type LintErAll = {
       jsonC5: RulesConfig,
     },
     yaml: RulesConfig,
+    markdown: RulesConfig,
   },
 }

@@ -39,4 +39,8 @@ export const _files = {
     '**/*.yaml',
     '**/*.yml',
   ],
+  /** MARKDOWN files */
+  markdown: [
+    '**/*.md',
+  ],
 }
