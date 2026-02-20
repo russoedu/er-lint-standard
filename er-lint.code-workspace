@@ -31,8 +31,8 @@
         "type": "node-terminal",
       },
       {
-        "name": "Auto",
-        "command": "npm run dev",
+        "name": "Self Updated",
+        "command": "npm run build:lint",
         "request": "launch",
         "type": "node-terminal",
       },

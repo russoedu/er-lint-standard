@@ -265,19 +265,25 @@ export const rulesJavaScriptStandard : Linter.RulesRecord = {
 }
 export const rulesJavaScriptLintErAll : Linter.RulesRecord = {
   ...rulesJavaScriptStandard,
-  'no-unused-vars':        'off',
-  'no-dupe-class-members': 'off',
-  'no-var':                'error',
-  'prefer-const':          'error',
-  'no-extra-boolean-cast': 'off',
-  'no-throw-literal':      'off',
-  'object-curly-spacing':  ['error', 'always'],
-  'no-useless-escape':     'off',
-  'space-before-blocks':   'error',
-  'import/no-unresolved':  'off',
-  'n/no-missing-import':   'off',
-  semi:                    ['error', 'never'],
-  'comma-dangle':          [
+  'no-unused-vars':         'off',
+  'no-dupe-class-members':  'off',
+  'no-var':                 'error',
+  'prefer-const':           'error',
+  'no-extra-boolean-cast':  'off',
+  'no-throw-literal':       'off',
+  'object-curly-spacing':   ['error', 'always'],
+  'no-useless-escape':      'off',
+  'space-before-blocks':    'error',
+  'import/no-unresolved':   'off',
+  'n/no-missing-import':    'off',
+  semi:                     ['error', 'never'],
+  'generator-star-spacing': ['error', {
+    before:    false,
+    after:     true,
+    anonymous: 'neither',
+    method:    { before: true, after: true },
+  }],
+  'comma-dangle': [
     'error',
     {
       arrays:    'always-multiline',
