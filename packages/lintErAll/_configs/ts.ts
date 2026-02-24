@@ -1,4 +1,4 @@
-import pluginImport from 'eslint-plugin-import'
+import pluginImportX from 'eslint-plugin-import-x'
 import pluginNode from 'eslint-plugin-n'
 import pluginPromise from 'eslint-plugin-promise'
 import pluginReact from 'eslint-plugin-react'
@@ -19,7 +19,7 @@ const globalsJsTs = {
 }
 
 const standardExtends = [
-  pluginImport.flatConfigs.recommended,
+  pluginImportX.configs['flat/recommended'] as any,
   pluginNode.configs['flat/recommended'],
   {
     name:    'promise/flat/recommended',

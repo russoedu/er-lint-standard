@@ -1,7 +1,7 @@
 import pluginJson from '@eslint/json'
 import pluginJsonc from 'eslint-plugin-jsonc'
 import pluginMarkdown from '@eslint/markdown'
-import pluginImport from 'eslint-plugin-import'
+import pluginImportX from 'eslint-plugin-import-x'
 import pluginNode from 'eslint-plugin-n'
 import pluginPromise from 'eslint-plugin-promise'
 import pluginReact from 'eslint-plugin-react'
@@ -35,12 +35,12 @@ const ignores = {
 }
 
 const javaScriptStandardImport = {
-  'import/export':                   'error',
-  'import/first':                    'error',
-  'import/no-absolute-path':         ['error', { esmodule: true, commonjs: true, amd: false }],
-  'import/no-duplicates':            'error',
-  'import/no-named-default':         'error',
-  'import/no-webpack-loader-syntax': 'error',
+  'import-x/export':                   'error',
+  'import-x/first':                    'error',
+  'import-x/no-absolute-path':         ['error', { esmodule: true, commonjs: true, amd: false }],
+  'import-x/no-duplicates':            'error',
+  'import-x/no-named-default':         'error',
+  'import-x/no-webpack-loader-syntax': 'error',
 }
 const javaScriptStandardN = {
   'n/handle-callback-err':   ['error', '^(err|error)$'],
@@ -290,6 +290,8 @@ const lintErAll$2 = {
   'space-before-blocks':    'error',
   'import/no-unresolved':   'off',
   'n/no-missing-import':    'off',
+  'n/no-extraneous-import': 'off',
+  'import-x/no-unresolved': 'off',
   semi:                     ['error', 'never'],
   'generator-star-spacing': ['error', {
     before:    false,
@@ -603,7 +605,7 @@ const globalsJsTs = {
   ...globalsConfig.browser,
 }
 const standardExtends = [
-  pluginImport.flatConfigs.recommended,
+  pluginImportX.configs['flat/recommended'],
   pluginNode.configs['flat/recommended'],
   {
     name:    'promise/flat/recommended',
