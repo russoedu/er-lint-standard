@@ -1,15 +1,23 @@
 import typescript from '@rollup/plugin-typescript'
 import { ESLint } from 'eslint'
-import { readFileSync, rmSync } from 'node:fs'
+import { readdirSync, readFileSync, rmSync } from 'node:fs'
 import { rollup } from 'rollup'
 import { SingleBar } from 'cli-progress'
 import colours from 'ansi-colors'
+import path from 'node:path'
+import { defineConfig } from 'eslint/config'
+import { lintErAll } from '../../../eslint.linterall.mjs'
 
 class RollupSelfBuild {
-  #inputPath = 'src/eslint/index.ts'
-  #buildFolder = 'src/eslint/rollup/' + JSON.parse(readFileSync('src/eslint/rollup/tsconfig.json')).compilerOptions.outDir
-  #tsConfigPath = './src/eslint/rollup/tsconfig.json'
-  #outputPath = 'eslint.linterall.mjs'
+  #root = path.join(import.meta.dirname, '../../../')
+  #lintErAllRoot = path.join(import.meta.dirname, '../')
+  #inputPath = `${this.#lintErAllRoot}/index.ts`
+
+  ts = readdirSync(this.#lintErAllRoot)
+  #buildFolder = `${this.#lintErAllRoot}/${JSON.parse(readFileSync(`${this.#lintErAllRoot}/tsconfig.json`)).compilerOptions.outDir}`
+  #tsConfigPath = `${this.#lintErAllRoot}/tsconfig.json`
+  #entryFileName = 'eslint.linterall.mjs'
+  #outputPath = path.join(this.#root, this.#entryFileName)
   #steps = [
     'loading external dependencies',
     'transpiling TypeScript config with Rollup',
@@ -80,7 +88,7 @@ class RollupSelfBuild {
 
   #setExternal () {
     this.#updateBar()
-    const pack = JSON.parse(readFileSync('./package.json', 'utf8'))
+    const pack = JSON.parse(readFileSync(path.join(this.#root, 'package.json'), 'utf8'))
     this.#external = [
       ...pack.dependencies ? Object.keys(pack.dependencies) : [],
       ...pack.devDependencies ? Object.keys(pack.devDependencies) : [],
@@ -105,9 +113,9 @@ class RollupSelfBuild {
 
     // Write the output
     await this.#bundle.write({
-      dir:            './',
+      dir:            this.#root,
       format:         'esm',
-      entryFileNames: this.#outputPath,
+      entryFileNames: this.#entryFileName,
     })
   }
 
@@ -118,7 +126,12 @@ class RollupSelfBuild {
 
   async #lintResult () {
     this.#updateBar()
-    const eslint = new ESLint({ fix: true })
+    const eslint = new ESLint({
+      fix:        true,
+      baseConfig: defineConfig([
+        ...lintErAll.configs.lintErAll,
+      ]),
+    })
 
     const results = await eslint.lintFiles([this.#outputPath])
     await ESLint.outputFixes(results)

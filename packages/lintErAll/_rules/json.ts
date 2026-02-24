@@ -1,5 +1,5 @@
 import { Linter } from 'eslint'
-export const rulesJson: Linter.RulesRecord = {
+export const json: Linter.RulesRecord = {
   'eol-last':                ['error', 'never'],
   'no-multiple-empty-lines': [
     'error',
@@ -72,8 +72,8 @@ export const rulesJson: Linter.RulesRecord = {
   'jsonc/quotes':                  'error',
   'jsonc/space-unary-ops':         'error',
 }
-export const rulesJsonC5: Linter.RulesRecord = {
-  ...rulesJson,
+export const jsonC5: Linter.RulesRecord = {
+  ...json,
   'jsonc/no-comments':  'off',
   'jsonc/comma-dangle': ['error', 'always'],
   'comma-dangle':       'off',

@@ -12,7 +12,7 @@ import globalsConfig from 'globals'
 import pluginTypescript from 'typescript-eslint'
 import { configs } from 'eslint-plugin-yml'
 
-const configIgnores = {
+const ignores = {
   name:    'Global Ignores',
   ignores: [
     '.azurite/**',
@@ -34,7 +34,7 @@ const configIgnores = {
   ],
 }
 
-const rulesJavaScriptStandardImport = {
+const javaScriptStandardImport = {
   'import/export':                   'error',
   'import/first':                    'error',
   'import/no-absolute-path':         ['error', { esmodule: true, commonjs: true, amd: false }],
@@ -42,7 +42,7 @@ const rulesJavaScriptStandardImport = {
   'import/no-named-default':         'error',
   'import/no-webpack-loader-syntax': 'error',
 }
-const rulesJavaScriptStandardN = {
+const javaScriptStandardN = {
   'n/handle-callback-err':   ['error', '^(err|error)$'],
   'n/no-callback-literal':   'error',
   'n/no-deprecated-api':     'error',
@@ -57,7 +57,7 @@ const rulesJavaScriptStandardPromise = {
 /**
  * Standard JavaScript rules - https://standardjs.com
  */
-const rulesJavaScriptStandard = {
+const standard$1 = {
   'no-var':                'warn',
   'object-shorthand':      ['warn', 'properties'],
   'accessor-pairs':        ['error', { setWithoutGet: true, enforceForClassMembers: true }],
@@ -273,12 +273,12 @@ const rulesJavaScriptStandard = {
   'wrap-iife':          ['error', 'any', { functionPrototypeMethods: true }],
   'yield-star-spacing': ['error', 'both'],
   yoda:                 ['error', 'never'],
-  ...rulesJavaScriptStandardImport,
-  ...rulesJavaScriptStandardN,
+  ...javaScriptStandardImport,
+  ...javaScriptStandardN,
   ...rulesJavaScriptStandardPromise,
 }
-const rulesJavaScriptLintErAll = {
-  ...rulesJavaScriptStandard,
+const lintErAll$2 = {
+  ...standard$1,
   'no-unused-vars':         'off',
   'no-dupe-class-members':  'off',
   'no-var':                 'error',
@@ -371,15 +371,19 @@ const rulesJavaScriptLintErAll = {
       },
     },
   ],
+  'n/no-unsupported-features/node-builtins': ['error', {
+    version: '>=22.16.0',
+    ignores: [],
+  }],
 }
-const rulesJavaScriptLintErAllTest = {
-  ...rulesJavaScriptLintErAll,
+const lintErAllTest$1 = {
+  ...lintErAll$2,
   'import/first':                          'off',
   '@typescript-eslint/no-require-imports': 'off',
   '@typescript-eslint/no-empty-function':  'off',
 }
 
-const rulesJson = {
+const json$1 = {
   'eol-last':                ['error', 'never'],
   'no-multiple-empty-lines': [
     'error',
@@ -452,20 +456,20 @@ const rulesJson = {
   'jsonc/quotes':                  'error',
   'jsonc/space-unary-ops':         'error',
 }
-const rulesJsonC5 = {
-  ...rulesJson,
+const jsonC5 = {
+  ...json$1,
   'jsonc/no-comments':  'off',
   'jsonc/comma-dangle': ['error', 'always'],
   'comma-dangle':       'off',
 }
 
-const rulesYaml = {
+const yaml$1 = {
   indent:           ['error', 2],
   'eol-last':       ['error', 'never'],
   'spaced-comment': 'off',
 }
 
-const rulesMarkdown = {}
+const markdown$1 = {}
 
 /**
  * This file is used to export all the rules in a single object, so that they can be easily imported in the configs.
@@ -478,35 +482,35 @@ const _rules = {
     /**
          * Standard JavaScript rules - https://standardjs.com
          */
-    standard:      rulesJavaScriptStandard,
+    standard:      standard$1,
     /**
          * LintErAll opinionated rules
          */
-    lintErAll:     rulesJavaScriptLintErAll,
+    lintErAll:     lintErAll$2,
     /**
          * LintErAll opinionated rules for test files, which are more lenient to allow for common testing patterns that may not be ideal in production code, but are often necessary in tests (e.g., using require for dynamic imports, allowing empty functions for mocks, etc.). These rules are applied to test files (e.g., *.test.ts, *.spec.ts) to provide a more flexible linting experience while still maintaining code quality.
          */
-    lintErAllTest: rulesJavaScriptLintErAllTest,
+    lintErAllTest: lintErAllTest$1,
   },
   /** JSON, JSONC and JSON5 rules */
   json: {
     /**
          * LintErAll opinionated JSON rules
          */
-    json:   rulesJson,
+    json: json$1,
     /**
          * LintErAll opinionated JSONC amd JSON5 rules
          */
-    jsonC5: rulesJsonC5,
+    jsonC5,
   },
   /**
      * LintErAll opinionated YAML rules
      */
-  yaml:     rulesYaml,
+  yaml:     yaml$1,
   /**
      * LintErAll opinionated Markdown rules
      */
-  markdown: rulesMarkdown,
+  markdown: markdown$1,
 }
 
 /**
@@ -560,21 +564,21 @@ const jsonExtends = [
   pluginJson.configs.recommended,
   pluginJsonc.configs['flat/recommended-with-json'],
 ]
-const configJSON = {
+const json = {
   name:     'JSON Config',
   files:    _files.json.json,
   extends:  jsonExtends,
   language: 'json/json',
   rules:    _rules.json.json,
 }
-const configJSONC = {
+const jsonc = {
   name:     'JSONC Config',
   files:    _files.json.jsonc,
   extends:  jsonExtends,
   language: 'json/jsonc',
   rules:    _rules.json.jsonC5,
 }
-const configJSON5 = {
+const json5 = {
   name:     'JSON5 Config',
   files:    _files.json.json5,
   extends:  jsonExtends,
@@ -582,7 +586,7 @@ const configJSON5 = {
   rules:    _rules.json.jsonC5,
 }
 
-const configMarkdown = {
+const markdown = {
   name:    'Markdown Config',
   files:   _files.markdown,
   extends: [
@@ -607,7 +611,7 @@ const standardExtends = [
     rules:   _rules.ts.standard,
   },
 ]
-const configStandard = {
+const standard = {
   name:            'Standard Config',
   files:           _files.ts,
   languageOptions: {
@@ -616,9 +620,10 @@ const configStandard = {
   extends: standardExtends,
   rules:   _rules.ts.standard,
 }
-const configLintErAll = {
+const lintErAll$1 = {
   name:            'LintErAll Config',
   files:           _files.ts,
+  ignores:         _files.tsTest,
   languageOptions: {
     globals:       globalsJsTs,
     parserOptions: {
@@ -644,14 +649,14 @@ const configLintErAll = {
   ],
   rules: _rules.ts.lintErAll,
 }
-const configLintErAllTest = {
-  ...configLintErAll,
+const lintErAllTest = {
+  ...lintErAll$1,
   name:  'LintErAll Tests Config',
   files: _files.tsTest,
   rules: _rules.ts.lintErAllTest,
 }
 
-const configYAML = {
+const yaml = {
   name:    'YAML Config',
   files:   _files.yaml,
   extends: [
@@ -666,36 +671,36 @@ const configYAML = {
  */
 const _configs = {
   lintErAll: [
-    configIgnores,
-    configJSON,
-    configJSON5,
-    configJSONC,
-    configLintErAll,
-    configLintErAllTest,
-    configYAML,
-    configMarkdown,
+    ignores,
+    json,
+    json5,
+    jsonc,
+    lintErAll$1,
+    lintErAllTest,
+    yaml,
+    markdown,
   ],
   /**
      * Global ignores, applied to all configs. This is useful for ignoring files that are not relevant to linting, such as build artifacts, dependencies, and other generated files.
      */
-  ignores: configIgnores,
+  ignores,
   /**
      * JavaScript and TypeScript configs. These configs are applied to JavaScript and TypeScript files, and include rules for both languages.
      */
-  ts:      {
+  ts: {
     /**
          * Standard config - https://standardjs.com
          * The standard config is based on the popular StandardJS style guide, which is a widely used set of rules for JavaScript and TypeScript development.
          */
-    standard:      configStandard,
+    standard,
     /**
          * LintErAll opinionated config. This config is more opinionated than the standard config, and includes additional rules that are not part of the standard style guide. These rules are designed to enforce best practices and improve code quality, but may be more strict than some developers prefer. It's recommended to use this config for new projects or when you want to enforce a higher level of code quality, but it may require some adjustments to existing codebases to comply with the stricter rules.
          */
-    lintErAll:     configLintErAll,
+    lintErAll: lintErAll$1,
     /**
          * LintErAll opinionated config for test files. This config is more lenient than the main LintErAll config, and includes rules that are specifically designed for test files. These rules allow for common testing patterns that may not be ideal in production code, but are often necessary in tests (e.g., using require for dynamic imports, allowing empty functions for mocks, etc.). This config is applied to test files (e.g., *.test.ts, *.spec.ts) to provide a more flexible linting experience while still maintaining code quality in test code.
          */
-    linterAllTest: configLintErAllTest,
+    lintErAllTest,
   },
   /**
      * JSON configs. These configs are applied to JSON files, and include rules for JSON syntax and best practices. The JSON config is for standard JSON files, the JSONC config is for JSON files with comments (JSONC), and the JSON5 config is for JSON files with more relaxed syntax (JSON5). Each config includes rules that are specific to the syntax and features of the respective JSON format, while also sharing common rules for general JSON best practices.
@@ -705,37 +710,37 @@ const _configs = {
          * All JSON configurations for JSON, JSONC and JSON5
          */
     lintErAll: [
-      configJSON,
-      configJSONC,
-      configJSON5,
+      json,
+      jsonc,
+      json5,
     ],
     /**
          * Standard JSON config
          */
-    json:  configJSON,
+    json,
     /**
          * JSONC config.
          */
-    jsonc: configJSONC,
+    jsonc,
     /**
          * JSON5 and VSCode config files
          */
-    json5: configJSON5,
+    json5,
   },
   /**
      * YAML config. This config is applied to YAML files, and includes rules for YAML syntax and best practices. The YAML config is designed to enforce consistent formatting and structure in YAML files, while also providing rules for common YAML pitfalls and best practices.
      */
-  yaml:     configYAML,
+  yaml,
   /**
      * Markdown config. This config is applied to Markdown files, and includes rules for md syntax and best practices.
      */
-  markdown: configMarkdown,
+  markdown,
 }
 
 /**
  * LintErAll is a comprehensive collection of ESLint configurations, file patterns, and rules designed to provide a standardized linting setup for various types of projects. It includes configurations for JavaScript, TypeScript, React, JSON, and YAML, along with specific rules to enforce code quality and consistency across different file types.
  */
-const lintErAll = {
+const lintErAllObject = {
   /**
     * All LintErAll configs for each file type and purpose. This includes configs for TypeScript, JSON, YAML and global ignores. Each config is designed to be used with __ESLint's flat config__ system, and can be extended or customized as needed.
      */
@@ -749,5 +754,48 @@ const lintErAll = {
      */
   rules:   _rules,
 }
+function callLintErAll (_configs) {
+  // return configs and set rules
+  //
+}
+// Factory that creates the callable object
+function createLintErAll () {
+  // Make the function callable
+  const function_ = callLintErAll.bind('')
+  // Attach properties (like Axios does)
+  function_.configs = _configs
+  function_.files = _files
+  function_.rules = _rules
 
-export { lintErAll }
+  return function_
+}
+/**
+ * All LintErAll configs for each file type and purpose. This includes configs for TypeScript, JSON, YAML and global ignores. Each config is designed to be used with __ESLint's flat config__ system, and can be extended or customized as needed.
+ */
+/**
+
+ */
+/**
+
+/**
+ * The main LintErAll export. It can be invoked as a function to merge ESLint
+ * configs, and also accessed as an object containing predefined configs,
+ * file patterns, and rule sets.
+ * A callable function that merges user ESLint configs with LintErAll rules,
+ * while also exposing configuration objects (`configs`, `files`, `rules`)
+ * as properties — similar to how Axios exposes both axios() and axios.get().
+ *
+ * @callback LintErAllFunction
+ * @param {object} configs - User-provided ESLint configuration to merge.
+ * @returns {object} The merged ESLint configuration including LintErAll rules.
+ *
+ * @type {LintErAll}
+*  @typedef {LintErAllFunction & {
+ *   configs: object,
+ *   files: object,
+ *   rules: object
+ * }} LintErAll
+ */
+const lintErAll = createLintErAll()
+
+export { callLintErAll, lintErAll, lintErAllObject }

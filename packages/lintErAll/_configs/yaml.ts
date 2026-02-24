@@ -1,9 +1,9 @@
 import { configs as pluginYamlConfigs } from 'eslint-plugin-yml'
-import { ConfigWithExtends } from '../_types'
+import { type ConfigWithExtends } from '@eslint/config-helpers'
 import { _rules } from '../_rules'
 import { _files } from '../_files'
 
-export const configYAML: ConfigWithExtends = {
+export const yaml: ConfigWithExtends = {
   name:    'YAML Config',
   files:   _files.yaml,
   extends: [

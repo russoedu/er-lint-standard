@@ -1,6 +1,6 @@
 import { Linter } from 'eslint'
 
-const rulesJavaScriptStandardImport : Linter.RulesRecord = {
+const javaScriptStandardImport : Linter.RulesRecord = {
   'import/export':           'error',
   'import/first':            'error',
   'import/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
@@ -10,7 +10,7 @@ const rulesJavaScriptStandardImport : Linter.RulesRecord = {
   'import/no-webpack-loader-syntax': 'error',
 }
 
-const rulesJavaScriptStandardN : Linter.RulesRecord = {
+const javaScriptStandardN : Linter.RulesRecord = {
   'n/handle-callback-err':   ['error', '^(err|error)$'],
   'n/no-callback-literal':   'error',
   'n/no-deprecated-api':     'error',
@@ -24,7 +24,7 @@ const rulesJavaScriptStandardPromise : Linter.RulesRecord = {
   'promise/param-names': 'error',
 }
 
-export const rulesJavaScriptPromiseRecommendedRules : Linter.RulesRecord = {
+export const javaScriptPromiseRecommendedRules : Linter.RulesRecord = {
   'promise/always-return':          'error',
   'promise/no-return-wrap':         'error',
   'promise/param-names':            'error',
@@ -41,7 +41,7 @@ export const rulesJavaScriptPromiseRecommendedRules : Linter.RulesRecord = {
 /**
  * Standard JavaScript rules - https://standardjs.com
  */
-export const rulesJavaScriptStandard : Linter.RulesRecord = {
+export const standard : Linter.RulesRecord = {
   'no-var':           'warn',
   'object-shorthand': ['warn', 'properties'],
 
@@ -259,12 +259,12 @@ export const rulesJavaScriptStandard : Linter.RulesRecord = {
   'yield-star-spacing': ['error', 'both'],
   yoda:                 ['error', 'never'],
 
-  ...rulesJavaScriptStandardImport,
-  ...rulesJavaScriptStandardN,
+  ...javaScriptStandardImport,
+  ...javaScriptStandardN,
   ...rulesJavaScriptStandardPromise,
 }
-export const rulesJavaScriptLintErAll : Linter.RulesRecord = {
-  ...rulesJavaScriptStandard,
+export const lintErAll : Linter.RulesRecord = {
+  ...standard,
   'no-unused-vars':         'off',
   'no-dupe-class-members':  'off',
   'no-var':                 'error',
@@ -357,10 +357,14 @@ export const rulesJavaScriptLintErAll : Linter.RulesRecord = {
       },
     },
   ],
+  'n/no-unsupported-features/node-builtins': ['error', {
+    version: '>=22.16.0',
+    ignores: [],
+  }],
 }
 
-export const rulesJavaScriptLintErAllTest : Linter.RulesRecord = {
-  ...rulesJavaScriptLintErAll,
+export const lintErAllTest : Linter.RulesRecord = {
+  ...lintErAll,
   'import/first':                          'off',
   '@typescript-eslint/no-require-imports': 'off',
   '@typescript-eslint/no-empty-function':  'off',

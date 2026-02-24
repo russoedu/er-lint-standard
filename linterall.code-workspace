@@ -32,7 +32,7 @@
       },
       {
         "name": "Self Updated",
-        "command": "npm run build:lint",
+        "command": "npm run config",
         "request": "launch",
         "type": "node-terminal",
       },

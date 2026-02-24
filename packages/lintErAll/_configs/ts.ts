@@ -7,9 +7,9 @@ import pluginReactRefresh from 'eslint-plugin-react-refresh'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import globalsConfig from 'globals'
 import pluginTypescript from 'typescript-eslint'
-import { ConfigWithExtends } from '../_types'
 import { _rules } from '../_rules'
 import { _files } from '../_files'
+import { type ConfigWithExtends } from '@eslint/config-helpers'
 
 const globalsJsTs = {
   ...globalsConfig.node,
@@ -27,7 +27,7 @@ const standardExtends = [
     rules:   _rules.ts.standard,
   },
 ]
-export const configStandard: ConfigWithExtends = {
+export const standard: ConfigWithExtends = {
   name:            'Standard Config',
   files:           _files.ts,
   languageOptions: {
@@ -37,9 +37,10 @@ export const configStandard: ConfigWithExtends = {
   rules:   _rules.ts.standard,
 }
 
-export const configLintErAll: ConfigWithExtends = {
+export const lintErAll: ConfigWithExtends = {
   name:            'LintErAll Config',
   files:           _files.ts,
+  ignores:         _files.tsTest,
   languageOptions: {
     globals:       globalsJsTs,
     parserOptions: {
@@ -66,8 +67,8 @@ export const configLintErAll: ConfigWithExtends = {
   rules: _rules.ts.lintErAll,
 }
 
-export const configLintErAllTest: ConfigWithExtends = {
-  ...configLintErAll,
+export const lintErAllTest: ConfigWithExtends = {
+  ...lintErAll,
   name:  'LintErAll Tests Config',
   files: _files.tsTest,
   rules: _rules.ts.lintErAllTest,
